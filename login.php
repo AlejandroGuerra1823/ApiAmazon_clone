@@ -19,6 +19,7 @@ var_dump($resultado);
 
 
 if ($resultado->num_rows>0) {
+    
     echo "ingreso correctamente" ;
 }else{
     echo "error";
