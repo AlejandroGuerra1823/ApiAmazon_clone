@@ -1,14 +1,13 @@
 <?php 
 
 require_once(dirname(__DIR__)."../db/db_config.php");
-//if ($_SERVER['REQUEST_METHOD']=="POST"){
+if ($_SERVER['REQUEST_METHOD']=="POST"){
 
- //$data=json_decode(file_get_contents('php://input'));
+$data=json_decode(file_get_contents('php://input'), true);
 
-$nombre=$_GET['id'];
+$nombre="";
 
-
-   // $identification = $data['id'];
+$nombre=$data['Ncompra'];
 
 $product= "";
 
@@ -16,13 +15,12 @@ $texto="";
 
     $db = new DBConfig();
     $dbConnection= $db->connect();
-    $query= "SELECT * FROM compras WHERE id='$nombre'";
+    $query= "SELECT * FROM factura WHERE codigo='$nombre'";
     $product = $dbConnection->query($query)->fetchAll(PDO::FETCH_ASSOC);
     header('Content-Type: application/json');
-  
-   echo var_dump(implode(",",(implode(",", $product))));
+    echo(json_encode($product));
 
-   //echo $nombre;
-//}
-
+}else{
+    echo "negativo";
+}
 ?>

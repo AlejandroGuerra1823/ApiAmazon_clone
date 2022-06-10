@@ -1,17 +1,21 @@
 <?php 
 class DBConfig{
 
-    private $user = "admin";
+   /*  private $user = "admin";
     private $password = "Moviles2";
     private $dbname = "amazon_clone";
     private $host ="database-1.csycveucbr4k.us-east-1.rds.amazonaws.com";
-    private $port ="3306";
-   
+    private $port ="3306"; */ 
 
+    private $user = "root";
+    private $password = "";
+    private $dbname = "amazon_clone";
+    private $host ="localhost";
 
     public function connect(){
         try{
-        $dsn= "mysql:hots=$this->host;port=$this->port;dbname=$this->dbname";
+      //  $dsn= "mysql:hots=$this->host;port=$this->port;dbname=$this->dbname";
+        $dsn= "mysql:hots=$this->host;dbname=$this->dbname";
         $connection = new PDO($dsn, $this->user, $this->password);
         $connection-> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         return $connection;
@@ -28,10 +32,6 @@ class DBConfig{
 $clase= new DBConfig;
 
 $clase->connect();
-
-
-
-
 
 
 ?>
